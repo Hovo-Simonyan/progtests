@@ -22,6 +22,7 @@ class LanguagesChoices(Languages):
         return Test.objects.filter(level=user_date['level'], type_of=user_date['type_of'])
 
 class QuestionView(ListAPIView):
+    """ Api for Question. """
     queryset = get_all_objects(Question)
     serializer_class = QuestionSerializer
     lookup_field = 'test__id'
