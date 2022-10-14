@@ -9,7 +9,8 @@ const connectDb = require("./config/dbConn");
 const app = express();
 connectDb();
 
-
+app.set("view engine", "ejs");
+app.use(express.static("static"));
 
 
 // routes
@@ -17,6 +18,10 @@ app.get("/", (req, res) => {
   User.create({ name: "Hovo", password: "1234" });
   res.send("Hello world!");
 });
+
+app.get('/home', (req, res) => {
+ res.render('index.ejs') 
+})
 
 app.get("/users", async (req, res) => {
   const users = await User.find();
