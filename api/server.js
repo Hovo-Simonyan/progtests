@@ -29,7 +29,7 @@ app.get("/users", async (req, res) => {
 // connected and listening port
 mongosee.connection.once("open", () => {
   console.log("Connected to MongoDb");
-  app.listen(4000, () => {
+  app.listen(process.env.PORT || 4000, () => {
     console.log("Server is listening port 4000");
   });
 });
